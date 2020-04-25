@@ -37,8 +37,11 @@ void ServerHandleThread::readyRead(){
     QByteArray tmp;
     tmp=oTcpSocket->read(9600);
     read_data=QString::fromUtf8(tmp);
-    if(*read_data.begin()=="\n"&&*(read_data.end()-1)=="\r")qDebug().noquote()<<tmp;
-}
+    if(*read_data.begin()=="\n"&&*(read_data.end()-1)=="\r"){
+        qDebug().noquote()<<"str："<<tmp;
+        qDebug()<<"Hex："<<tmp.toHex();
+    }
+    }
 void ServerHandleThread::run()
 {
     //1. 建立与客户端通信的TCP套接字
